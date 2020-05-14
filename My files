@@ -1,0 +1,70 @@
+***Edited by Rachel Perry***
+<!DOCTYPE html>
+<html>
+    <head>
+    <title>Pet Store</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--BOOTSTRAP 4-->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <!--FONTS-->
+        <link href="https://fonts.googleapis.com/css?family=Englebert&display=swap" rel="stylesheet">
+    <!--STYLESHEETS-->
+        <link rel="stylesheet" href="styles/login_signup.css">
+    <!--ICONS-->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    </head>
+    <body>
+        <div class="container">
+    <div class="row">
+      <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+        <div class="card card-signin my-5">
+          <div class="card-body">
+              <h4 class="card-title mt-3 text-center">Order Confirmation</h4>
+                <form>
+                    <table class="table table-bordered table-hover table-condensed">
+			<thead>
+				<!-- The header row-->
+				<tr>
+				<th>Name</th>
+				<th>Address</th>
+				<th>Item Price</th>
+				<th>Quantity</th>
+				<th>Total</th>
+				</tr>
+			</thead>
+				<tbody>
+				@if(order!= null){
+				<!-- Start of For Loop - For each p in product add a row -->
+				@for(i <- order.items){
+					<tr>
+					<td>@i.item.name</td>
+					<td>@i.item.description</td>
+					<td>&dollar; @("%.2f".format(i.price))</td>
+					<td>@i.stock</td>
+					<td>&dollar; @("%.2f".format(i.getItemTotal()))</td>
+					</tr>
+					}<!-- End of For Loop -->
+					}
+				</tbody>
+			</table>
+		<div class="form-group">
+		  <div class="col-md-12">
+		    <p class="text-right"><strong>Order Total: &dollar; @("%.2f".format(order.getOrderTotal()))</strong></p>
+		</div>
+                    <div class="form-group">
+                        <button type="submit" a href="index.html" class="btn btn-secondary btn-block"> Confirm Order  </button>
+                    </div> <!-- form-group// -->      
+                </form>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+    
+    </body>
+</html>
